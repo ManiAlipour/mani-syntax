@@ -1,5 +1,5 @@
 "use client";
-import { useIntersectionObserver, useUpdateEffect } from "iso-hooks";
+import { useIntersectionObserver } from "iso-hooks";
 import { Sparkles } from "lucide-react";
 import { motion } from "motion/react";
 import { useRef } from "react";
@@ -9,10 +9,6 @@ export function About() {
   const ref = useRef<HTMLDivElement>(null);
   const viewObserver = useIntersectionObserver(ref);
   const inView = viewObserver?.isIntersecting;
-
-  useUpdateEffect(() => {
-    console.log(inView);
-  }, [inView]);
 
   return (
     <section id="about" className="relative min-h-screen px-6 py-32">
