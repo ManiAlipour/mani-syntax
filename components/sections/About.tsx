@@ -7,7 +7,8 @@ import { experience } from "@/data/experience";
 
 export function About() {
   const ref = useRef<HTMLDivElement>(null);
-  const { isIntersecting: inView } = useIntersectionObserver(ref)!;
+  const viewObserver = useIntersectionObserver(ref);
+  const inView = viewObserver?.isIntersecting;
 
   useUpdateEffect(() => {
     console.log(inView);
