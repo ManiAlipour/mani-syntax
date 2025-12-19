@@ -148,7 +148,7 @@ export function Projects() {
   });
 
   return (
-    <section id="projects" className="relative px-6 py-28">
+    <section id="projects" className="relative px-6 py-10">
       {/* Subtle background accent */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-[#2ee6a6]/5 blur-3xl" />
@@ -177,17 +177,7 @@ export function Projects() {
         </div>
 
         {/* View all */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isIntersecting ? { opacity: 1 } : undefined}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-14 text-center"
-        >
-          <button className="inline-flex items-center gap-2 rounded-lg border border-[#1c2230] px-6 py-3 text-sm text-[#9aa3b2] transition-colors hover:border-[#2ee6a6] hover:text-[#2ee6a6]">
-            View all projects
-            <ExternalLink size={16} />
-          </button>
-        </motion.div>
+ 
       </div>
     </section>
   );
