@@ -1,5 +1,5 @@
 "use client";
-import { useIntersectionObserver } from "iso-hooks";
+import { useIntersectionObserver, useUpdateEffect } from "iso-hooks";
 import { Sparkles } from "lucide-react";
 import { motion } from "motion/react";
 import { useRef } from "react";
@@ -7,8 +7,7 @@ import { experience } from "@/data/experience";
 
 export function About() {
   const ref = useRef<HTMLDivElement>(null);
-  const viewObserver = useIntersectionObserver(ref);
-  const inView = viewObserver?.isIntersecting;
+  const { isIntersecting: inView } = useIntersectionObserver(ref);
 
   return (
     <section id="about" className="relative min-h-screen px-6 py-32">
@@ -37,18 +36,19 @@ export function About() {
             {/* Text Content */}
             <div className="lg:col-span-3 space-y-6">
               <p className="text-lg text-[#9aa3b2] leading-relaxed">
-                I&apos;m a passionate designer and developer focused on creating
-                memorable digital experiences that blend form and function.
+                I design and build digital experiences with a strong focus on
+                clarity, balance, and how things feel in real use.
               </p>
+
               <p className="text-lg text-[#9aa3b2] leading-relaxed">
-                With over 5 years of experience, I specialize in modern web
-                technologies and minimal design principles that prioritize user
-                experience.
+                Over the years, I’ve learned that good design isn’t about adding
+                more, but removing what doesn’t matter — both visually and
+                technically.
               </p>
+
               <p className="text-lg text-[#9aa3b2] leading-relaxed">
-                When I&apos;m not coding, you&apos;ll find me exploring new
-                design trends, contributing to open source, or capturing moments
-                through photography.
+                Outside of work, I enjoy exploring visual details, contributing
+                when I can, and capturing small moments through photography.
               </p>
 
               {/* Highlight card */}
@@ -60,9 +60,9 @@ export function About() {
                   <div>
                     <h3 className="text-[#e6eaf0] mb-2">My Philosophy</h3>
                     <p className="text-[#9aa3b2] text-sm leading-relaxed">
-                      I believe in creating digital experiences that are not
-                      only beautiful but also meaningful, accessible, and
-                      sustainable.
+                      I care deeply about thoughtful design — work that feels
+                      calm, intentional, and respectful of the user’s time and
+                      attention.
                     </p>
                   </div>
                 </div>
