@@ -81,13 +81,13 @@ export default function Hero() {
           >
             <a
               href="#contact"
-              className="group px-8 py-3.5 bg-[#2ee6a6] text-[#0b0e13] rounded-lg hover:bg-[#26bd8c] transition-all font-medium glow hover:glow-strong"
+              className="group md:px-8 md:py-3.5 px-6 py-3 bg-[#2ee6a6] text-[#0b0e13] rounded-lg hover:bg-[#26bd8c] transition-all font-medium glow hover:glow-strong"
             >
               <span>Get In Touch</span>
             </a>
             <a
               href="#projects"
-              className="px-8 py-3.5 border border-[#1c2230] text-[#e6eaf0] rounded-lg hover:border-[#2ee6a6] hover:bg-[#2ee6a6]/5 transition-all"
+              className="md:px-8 md:py-3.5 px-6 py-3 border border-[#1c2230] text-[#e6eaf0] rounded-lg hover:border-[#2ee6a6] hover:bg-[#2ee6a6]/5 transition-all"
             >
               View Work
             </a>
