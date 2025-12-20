@@ -1,3 +1,4 @@
+import Skills from "@/components/providers/Skills";
 import { About } from "@/components/sections/About";
 import Blogs from "@/components/sections/Blogs";
 import Hero from "@/components/sections/Hero";
@@ -10,6 +11,7 @@ export default function Home() {
       <About />
       <Projects />
       <Blogs />
+      <Skills />
     </main>
   );
 }

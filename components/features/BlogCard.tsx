@@ -79,7 +79,7 @@ export default function BlogCard({
         }`}
       >
         <div className="flex items-center gap-3 text-xs font-mono text-[#9aa3b2] mb-3">
-          <span>{new Date().toLocaleDateString()}</span>•<span>6</span>
+          <span>{new Date().toDateString()}</span>•<span>6</span>
         </div>
 
         <h3 className="text-[#e6eaf0] mb-3 group-hover:text-[#2ee6a6] transition-colors">
