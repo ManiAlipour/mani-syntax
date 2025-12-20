@@ -72,7 +72,7 @@ export default function Blogs() {
         animate={isIntersecting ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
         ref={ref}
-        className="max-w-5xl mx-auto gap-5 relative px-6"
+        className="max-w-5xl mx-auto gap-5 relative"
       >
         <div className="inline-block mb-4">
           <span className="text-sm font-mono text-[#2ee6a6]">03.</span>
