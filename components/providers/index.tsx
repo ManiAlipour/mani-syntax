@@ -6,7 +6,7 @@ export default function Providers({ children }: ChildrenProps) {
   return (
     <div
       className="min-h-screen 
-                 transition-colors duration-300 font-ubuntu"
+                 transition-colors duration-300"
     >
       <Header />
       {children}

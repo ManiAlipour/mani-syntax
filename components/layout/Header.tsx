@@ -1,14 +1,15 @@
 "use client";
 
-import { Link, Menu, Moon, X } from "lucide-react";
+import { Menu, Moon, X } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const links = [
   { title: "Home", href: "/" },
-  { title: "About", href: "#about" },
+  { title: "About", href: "/#about" },
   { title: "Projects", href: "#projects" },
-  { title: "Blogs", href: "#blogs" },
+  { title: "Blogs", href: "/blog" },
   { title: "Skills", href: "#skills" },
   { title: "Contact", href: "#contact" },
 ];
@@ -43,7 +44,7 @@ export default function Header() {
           }
         `}
       >
-        <Link href="/" className="text-sm font-medium tracking-wide">
+        <Link href="/" className=" font-light tracking-wide">
           Mani Alipour
         </Link>
 
