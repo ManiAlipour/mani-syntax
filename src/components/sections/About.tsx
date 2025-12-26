@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import { useRef } from "react";
 import { experience } from "@/data/experience";
 
-export function About() {
+export default function About() {
   const ref = useRef<HTMLDivElement>(null);
   const { isIntersecting: inView } = useIntersectionObserver(ref);
 
@@ -13,7 +13,7 @@ export function About() {
     <section id="about" className="relative min-h-screen px-6 py-32">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#2ee6a6]/3 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-accent/3 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-5xl mx-auto relative">
@@ -25,41 +25,39 @@ export function About() {
         >
           {/* Section Label */}
           <div className="inline-block mb-16">
-            <span className="text-sm font-mono text-[#2ee6a6]">01.</span>
-            <span className="text-sm font-mono text-[#9aa3b2] ms-3">
-              About Me
-            </span>
+            <span className="text-sm font-mono text-accent">01.</span>
+            <span className="text-sm font-mono text-muted ms-3">About Me</span>
           </div>
 
           {/* Content Grid */}
           <div className="grid lg:grid-cols-5 gap-16">
             {/* Text Content */}
             <div className="lg:col-span-3 space-y-6">
-              <p className="text-lg text-[#9aa3b2] leading-relaxed">
+              <p className="text-lg text-muted leading-relaxed">
                 I design and build digital experiences with a strong focus on
                 clarity, balance, and how things feel in real use.
               </p>
 
-              <p className="text-lg text-[#9aa3b2] leading-relaxed">
+              <p className="text-lg text-muted leading-relaxed">
                 Over the years, I’ve learned that good design isn’t about adding
                 more, but removing what doesn’t matter — both visually and
                 technically.
               </p>
 
-              <p className="text-lg text-[#9aa3b2] leading-relaxed">
+              <p className="text-lg text-muted leading-relaxed">
                 Outside of work, I enjoy exploring visual details, contributing
                 when I can, and capturing small moments through photography.
               </p>
 
               {/* Highlight card */}
-              <div className="mt-8 p-6 bg-[#11151c] border border-[#1c2230] rounded-xl">
+              <div className="mt-8 p-6 bg-background border border-border rounded-xl">
                 <div className="flex items-start gap-4">
-                  <div className="p-2 bg-[#2ee6a6]/10 rounded-lg">
-                    <Sparkles size={20} className="text-[#2ee6a6]" />
+                  <div className="p-2 bg-accent/10 rounded-lg">
+                    <Sparkles size={20} className="text-accent" />
                   </div>
                   <div>
-                    <h3 className="text-[#e6eaf0] mb-2">My Philosophy</h3>
-                    <p className="text-[#9aa3b2] text-sm leading-relaxed">
+                    <h3 className="text-foreground mb-2">My Philosophy</h3>
+                    <p className="text-muted text-sm leading-relaxed">
                       I care deeply about thoughtful design — work that feels
                       calm, intentional, and respectful of the user’s time and
                       attention.
@@ -71,9 +69,9 @@ export function About() {
 
             {/* Experience Timeline */}
             <div className="lg:col-span-2">
-              <h3 className="mb-8 text-[#e6eaf0]">Experience</h3>
+              <h3 className="mb-8 text-foreground">Experience</h3>
 
-              <div className="relative space-y-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-[#2ee6a6] before:via-[#1c2230] before:to-transparent">
+              <div className="relative space-y-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-accent before:via-border before:to-transparent">
                 {experience.map((item, index) => (
                   <motion.div
                     key={item.id}
@@ -83,15 +81,15 @@ export function About() {
                     className="relative ps-8"
                   >
                     {/* Timeline dot */}
-                    <div className="absolute left-0 top-2 h-2 w-2 -translate-x-[3.5px] rounded-full bg-[#2ee6a6]" />
+                    <div className="absolute left-0 top-2 h-2 w-2 -translate-x-[3.5px] rounded-full bg-accent" />
 
                     {/* Company + Period */}
-                    <p className="mb-2 font-mono text-xs text-[#2ee6a6]">
+                    <p className="mb-2 font-mono text-xs text-accent">
                       {item.company} • {item.period}
                     </p>
 
                     {/* Role */}
-                    <p className="text-[#e6eaf0]">{item.role}</p>
+                    <p className="text-foreground">{item.role}</p>
                   </motion.div>
                 ))}
               </div>

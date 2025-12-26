@@ -1,8 +1,12 @@
 "use client";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { motion } from "motion/react";
+import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 
 export default function Hero() {
+  const t = useTranslations("HomePage.SectionHero");
+
   return (
     <section
       id="home"
@@ -10,9 +14,9 @@ export default function Hero() {
     >
       {/* Animated gradient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-[#2ee6a6]/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse" />
         <div
-          className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-[#2ee6a6]/5 rounded-full blur-3xl animate-pulse"
+          className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse"
           style={{ animationDelay: "1s" }}
         />
       </div>
@@ -33,9 +37,9 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="inline-block mb-6"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#11151c] border border-[#1c2230] rounded-full text-xs font-mono text-[#2ee6a6]">
-              <span className="w-2 h-2 bg-[#2ee6a6] rounded-full animate-pulse" />
-              Available for work
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-background border border-border rounded-full text-xs font-mono text-accent">
+              <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+              {t("work")}
             </span>
           </motion.div>
 
@@ -47,7 +51,7 @@ export default function Hero() {
             className="mb-6"
           >
             <span className="gradient-text text-5xl md:text-6xk lg:text-7xl">
-              Mani Alipour
+              {t("title")}
             </span>
           </motion.h1>
 
@@ -56,9 +60,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-2xl md:text-3xl text-[#e6eaf0] mb-6"
+            className="text-2xl md:text-3xl text-foreground mb-6"
           >
-            Designer & Developer
+            {t("subtitle")}
           </motion.p>
 
           {/* Description */}
@@ -66,10 +70,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-base md:text-lg text-[#9aa3b2] mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-base md:text-lg text-muted mb-12 max-w-2xl mx-auto leading-relaxed"
           >
-            Crafting beautiful digital experiences with clean code and minimal
-            design
+            {t("desc")}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -81,16 +84,18 @@ export default function Hero() {
           >
             <a
               href="#contact"
-              className="group md:px-8 md:py-3.5 px-6 py-3 bg-[#2ee6a6] text-[#0b0e13] rounded-lg hover:bg-[#26bd8c] transition-all font-medium glow hover:glow-strong"
+              className="group md:px-8 md:py-3.5 px-6 py-3 bg-accent text-background
+               rounded-lg hover:bg-accent transition-all font-medium glow hover:glow-strong"
             >
-              <span>Get In Touch</span>
+              <span>{t("getTouch")}</span>
             </a>
-            <a
+            <Link
               href="#projects"
-              className="md:px-8 md:py-3.5 px-6 py-3 border border-[#1c2230] text-[#e6eaf0] rounded-lg hover:border-[#2ee6a6] hover:bg-[#2ee6a6]/5 transition-all"
+              className="md:px-8 md:py-3.5 px-6 py-3 border border-border text-foreground 
+              rounded-lg hover:border-accent hover:bg-accent/5 transition-all"
             >
-              View Work
-            </a>
+              {t("getWork")}
+            </Link>
           </motion.div>
 
           {/* Social Links */}
@@ -120,7 +125,7 @@ export default function Hero() {
                 rel={
                   social.label !== "Email" ? "noopener noreferrer" : undefined
                 }
-                className="p-3 bg-[#11151c] border border-[#1c2230] rounded-lg hover:border-[#2ee6a6] hover:text-[#2ee6a6] hover:-translate-y-1 transition-all"
+                className="p-3 bg-background border border-border rounded-lg hover:border-accent hover:text-accent hover:-translate-y-1 transition-all"
                 aria-label={social.label}
               >
                 <social.icon size={20} />
@@ -140,7 +145,7 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2 text-[#9aa3b2]"
+          className="flex flex-col items-center gap-2 text-muted"
         >
           <span className="text-xs font-mono">Scroll</span>
           <ArrowDown size={16} />

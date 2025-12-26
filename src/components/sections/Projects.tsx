@@ -61,8 +61,8 @@ function ProjectCard({ project, index }: ProjectCardProps) {
     >
       {/* Card container */}
       <div
-        className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#1c2230]
-       bg-[#11151c] transition-colors duration-500 hover:border-[#2ee6a6]/40"
+        className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border
+       bg-background transition-colors duration-500 hover:border-accent/40"
       >
         {/* ------------------------------------------------------------------ */}
         {/* Image                                                              */}
@@ -78,11 +78,11 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           />
 
           {/* Image overlay for contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0b0e13]/90 via-[#0b0e13]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
 
           {/* Featured label */}
           {project.featured && (
-            <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-[#2ee6a6] px-3 py-1.5 text-xs font-mono text-[#0b0e13]">
+            <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-1.5 text-xs font-mono text-background">
               <Star size={12} fill="currentColor" />
               Featured
             </span>
@@ -92,14 +92,14 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           <div className="pointer-events-none absolute right-4 top-4 flex gap-2 opacity-0 transition-opacity duration-300 group-hover:pointer-events-auto group-hover:opacity-100">
             <button
               aria-label="View source"
-              className="rounded-lg border border-[#1c2230] bg-[#0b0e13]/80 p-2 backdrop-blur transition-colors hover:border-[#2ee6a6] hover:text-[#2ee6a6]"
+              className="rounded-lg border border-border bg-background/80 p-2 backdrop-blur transition-colors hover:border-accent hover:text-accent"
             >
               <Github size={18} />
             </button>
 
             <button
               aria-label="Open project"
-              className="rounded-lg border border-[#1c2230] bg-[#0b0e13]/80 p-2 backdrop-blur transition-colors hover:border-[#2ee6a6] hover:text-[#2ee6a6]"
+              className="rounded-lg border border-border bg-background/80 p-2 backdrop-blur transition-colors hover:border-accent hover:text-accent"
             >
               <ExternalLink size={18} />
             </button>
@@ -110,12 +110,12 @@ function ProjectCard({ project, index }: ProjectCardProps) {
         {/* Content (flex column to normalize height)                           */}
         {/* ------------------------------------------------------------------ */}
         <div className="flex flex-1 flex-col gap-4 p-6">
-          <h3 className="text-lg text-[#e6eaf0] transition-colors group-hover:text-[#2ee6a6]">
+          <h3 className="text-lg text-foreground transition-colors group-hover:text-accent">
             {project.title}
           </h3>
 
           {/* Clamp description for consistent card height */}
-          <p className="line-clamp-3 text-sm leading-relaxed text-[#9aa3b2]">
+          <p className="line-clamp-3 text-sm leading-relaxed text-muted">
             {project.description}
           </p>
 
@@ -124,7 +124,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-[#1c2230] bg-[#0b0e13] px-3 py-1.5 text-xs font-mono text-[#9aa3b2]"
+                className="rounded-full border border-border bg-background px-3 py-1.5 text-xs font-mono text-muted"
               >
                 {tag}
               </span>
@@ -151,20 +151,18 @@ export function Projects() {
     <section id="projects" className="relative px-6 py-10">
       {/* Subtle background accent */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-[#2ee6a6]/5 blur-3xl" />
+        <div className="absolute left-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-accent/5 blur-3xl" />
       </div>
 
       <div ref={ref} className="relative mx-auto max-w-5xl px-6 py-32">
         {/* Header */}
         <div className="mb-14 max-w-2xl">
           <div className="mb-3 flex items-center gap-3">
-            <span className="font-mono text-sm text-[#2ee6a6]">02.</span>
-            <span className="font-mono text-sm text-[#9aa3b2]">
-              Selected Work
-            </span>
+            <span className="font-mono text-sm text-accent">02.</span>
+            <span className="font-mono text-sm text-muted">Selected Work</span>
           </div>
 
-          <h2 className="text-3xl leading-snug text-[#e6eaf0] md:text-4xl">
+          <h2 className="text-3xl leading-snug text-foreground md:text-4xl">
             Projects shaped by clarity, balance, and quiet systems.
           </h2>
         </div>
@@ -177,7 +175,6 @@ export function Projects() {
         </div>
 
         {/* View all */}
- 
       </div>
     </section>
   );

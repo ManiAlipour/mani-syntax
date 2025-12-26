@@ -1,0 +1,21 @@
+{
+  "Header": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "blogs": "Blogs",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+
+  "HomePage": {
+    "SectionHero": {
+      "work": "Available for work",
+      "title": "Mani Alipour",
+      "subtitle": "Designer & Developer",
+      "desc": "Crafting beautiful digital experiences with clean code and minimaldesign",
+      "getWork": "View Work",
+      "getTouch": "Get In Touch"
+    }
+  }
+}

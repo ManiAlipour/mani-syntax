@@ -1,20 +1,28 @@
 "use client";
 
-import { Menu, Moon, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
+import { ThemeContext } from "../providers";
 
 const links = [
-  { title: "Home", href: "/" },
-  { title: "About", href: "/#about" },
-  { title: "Projects", href: "#projects" },
-  { title: "Blogs", href: "/blog" },
-  { title: "Skills", href: "#skills" },
-  { title: "Contact", href: "#contact" },
+  { title: "home", href: "/" },
+  { title: "about", href: "/#about" },
+  { title: "projects", href: "#projects" },
+  { title: "blogs", href: "/blog" },
+  { title: "skills", href: "#skills" },
+  { title: "contact", href: "#contact" },
 ];
 
 export default function Header() {
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+  const { setTheme, theme } = useContext(ThemeContext);
+
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 80], [1, 0.96]);
 
@@ -27,6 +35,18 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleToggleLanguage = () => {
+    const path = pathname.replace(`/${locale}`, "");
+
+    if (locale === "en") router.push(`/fa${path}`);
+    if (locale === "fa") router.push(`/en${path}`);
+  };
+
+  const toggleTheme = () => {
+    if (theme === "dark") setTheme("light");
+    else setTheme("dark");
+  };
+
   return (
     <>
       {/* Header */}
@@ -37,22 +57,40 @@ export default function Header() {
           px-4 py-4 md:px-8 md:py-6
           flex items-center justify-between
           transition-all duration-300
-          ${
-            scrolled || menuOpen
-              ? "bg-white/70 dark:bg-neutral-950/70 backdrop-blur-xl"
-              : ""
-          }
+          ${scrolled || menuOpen ? "bg-background/70 backdrop-blur-xl" : ""}
         `}
       >
-        <Link href="/" className=" font-light tracking-wide">
+        <Link href="/" className="font-light tracking-wide">
           Mani Alipour
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center">
+        <nav className="hidden md:flex gap-7 items-center">
           {links.map((link, i) => (
             <HeaderLink key={link.href} {...link} index={i} />
           ))}
+
+          <div className="hidden md:flex gap-7">
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-lg bg-background border border-border hover:border-accent
+               hover:bg-background/80 transition-all"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? (
+                <Moon size={16} className="text-muted" />
+              ) : (
+                <Sun size={16} className="text-muted" />
+              )}
+            </button>
+
+            <button
+              onClick={handleToggleLanguage}
+              className="text-sm font-medium text-neutral-400"
+            >
+              {locale === "en" ? "فا" : "EN"}
+            </button>
+          </div>
         </nav>
 
         {/* Mobile menu button */}
@@ -82,7 +120,7 @@ export default function Header() {
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
+              className="fixed inset-0 z-40 bg-background/40 backdrop-blur-sm"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -94,7 +132,7 @@ export default function Header() {
               className="
                 fixed top-0 left-0 right-0 z-50
                 rounded-b-3xl
-                bg-[#0B0E13]/90
+                bg-background/90
                 backdrop-blur-2xl
                 px-6 pt-6 pb-8
               "
@@ -173,22 +211,19 @@ function HeaderLink({
   href: string;
   index: number;
 }) {
+  const t = useTranslations("Header");
+
   return (
     <motion.a
       href={href}
-      className="
-        px-4 py-2
-        text-sm
-        rounded-lg
-        text-neutral-600 dark:text-neutral-400
-        hover:text-neutral-900 dark:hover:text-neutral-100
-        hover:bg-neutral-100/50 dark:hover:bg-neutral-900/50
-      "
+      className="relative text-sm text-muted hover:text-foreground transition-colors group"
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05 }}
     >
-      {title}
+      {t(title)}
+
+      <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-300" />
     </motion.a>
   );
 }

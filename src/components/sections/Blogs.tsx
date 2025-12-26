@@ -64,7 +64,7 @@ export default function Blogs() {
   return (
     <section id="blogs" className="relative px-6 py-10">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-[#2ee6a6]/5 blur-3xl" />
+        <div className="absolute left-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-accent/5 blur-3xl" />
       </div>
 
       <motion.div
@@ -75,13 +75,13 @@ export default function Blogs() {
         className="max-w-5xl mx-auto gap-5 relative"
       >
         <div className="inline-block mb-4">
-          <span className="text-sm font-mono text-[#2ee6a6]">03.</span>
-          <span className="text-sm font-mono text-[#9aa3b2] ms-3">
+          <span className="text-sm font-mono text-accent">03.</span>
+          <span className="text-sm font-mono text-muted ms-3">
             Latest Articles
           </span>
         </div>
-        <h2 className="text-[#e6eaf0] max-w-2xl mb-4">Thoughts & Stories</h2>
-        <p className="text-[#9aa3b2] max-w-xl">
+        <h2 className="text-foreground max-w-2xl mb-4">Thoughts & Stories</h2>
+        <p className="text-muted max-w-xl">
           Insights on design, development, and everything in between.
         </p>
 
@@ -100,7 +100,7 @@ export default function Blogs() {
         transition={{ duration: 0.5, delay: 0.4 }}
         className="mt-14 text-center"
       >
-        <button className="inline-flex items-center gap-2 rounded-lg border border-[#1c2230] px-6 py-3 text-sm text-[#9aa3b2] transition-colors hover:border-[#2ee6a6] hover:text-[#2ee6a6]">
+        <button className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm text-muted transition-colors hover:border-accent hover:text-accent">
           View all blogs
           <ExternalLink size={16} />
         </button>

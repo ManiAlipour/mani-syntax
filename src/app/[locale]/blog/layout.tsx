@@ -77,7 +77,7 @@ function BlogLayout({ children }: { children: React.ReactNode }) {
                 ${
                   selectedCategory === category
                     ? "bg-accent text-background shadow-lg shadow-accent/20"
-                    : "bg-[#11151c] text-muted border border-border hover:border-accent hover:text-accent hover:bg-accent/5"
+                    : "bg-background text-muted border border-border hover:border-accent hover:text-accent hover:bg-accent/5"
                 }
                 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:ring-offset-2 focus:ring-offset-background`}
                     aria-pressed={selectedCategory === category}

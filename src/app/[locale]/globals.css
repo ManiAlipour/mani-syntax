@@ -12,12 +12,31 @@
   src: url(/fonts/ibm.ttf);
 }
 
+@font-face {
+  font-family: "Vazir";
+  src: url(/fonts/Vazirmatn.ttf);
+}
+
+@font-face {
+  font-family: "Estedad";
+  src: url(/fonts/Estedad-Regular.ttf);
+}
+
 :root {
   --background: #0b0e13;
   --foreground: #e6eaf0;
   --surface: #11151c;
   --muted: #9aa3b2;
   --border: #1c2230;
+  --accent: #2ee6a6;
+}
+
+:root[data-theme="light"] {
+  --background: #f3f4f6;
+  --foreground: #0f172a;
+  --surface: #ffffff;
+  --muted: #64748b;
+  --border: #e5e7eb;
   --accent: #2ee6a6;
 }
 
@@ -34,8 +53,8 @@
   --font-ubuntu: "Ubuntu";
   --font-work: "Work Sans", sans-serif;
 
-  --font-display: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-vazir: "Vazir";
+  --font-estedad: "Estedad";
 }
 
 @layer base {
@@ -48,7 +67,7 @@
   }
 
   body {
-    @apply bg-[#0b0e13] text-[#e6eaf0];
+    @apply bg-background text-foreground;
   }
 
   h1 {
@@ -83,26 +102,26 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-[#1c2230] rounded-full;
+  @apply bg-border rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-[#2ee6a6]/40;
+  @apply bg-accent/40;
 }
 
 /* Selection */
 ::selection {
-  @apply bg-[#2ee6a6]/20 text-[#e6eaf0];
+  @apply bg-accent/20 text-foreground;
 }
 
 /* Focus styles */
 :focus-visible {
-  @apply outline-none ring-2 ring-[#2ee6a6]/50 ring-offset-2 ring-offset-[#0b0e13];
+  @apply outline-none ring-2 ring-accent/50 ring-offset-2 ring-offset-background;
 }
 
 /* Gradient text */
 .gradient-text {
-  @apply bg-gradient-to-r from-[#2ee6a6] via-[#2ee6a6] to-[#26bd8c] bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-accent via-accent to-accent bg-clip-text text-transparent;
 }
 
 /* Glow effect */
