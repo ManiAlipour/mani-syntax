@@ -181,14 +181,23 @@ export default function Header() {
               {/* Utilities */}
               <div className="mt-10 flex items-center justify-between">
                 <button
-                  className="h-11 w-11 flex items-center justify-center rounded-xl bg-neutral-800"
+                  onClick={toggleTheme}
+                  className="p-2.5 rounded-lg bg-background border border-border hover:border-accent
+               hover:bg-background/80 transition-all"
                   aria-label="Toggle theme"
                 >
-                  <Moon size={18} />
+                  {theme === "light" ? (
+                    <Moon size={16} className="text-muted" />
+                  ) : (
+                    <Sun size={16} className="text-muted" />
+                  )}
                 </button>
 
-                <button className="text-sm font-medium text-neutral-400">
-                  EN
+                <button
+                  onClick={handleToggleLanguage}
+                  className="text-sm font-medium text-neutral-400"
+                >
+                  {locale === "en" ? "فا" : "EN"}
                 </button>
               </div>
             </motion.div>
